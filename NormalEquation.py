@@ -1,7 +1,7 @@
 from Utils import *
 
 def normal_equation(x,y):
-    """
+	"""
 	Description:
 		Computes the parameters based the training examples and values of the target variables using
 		the closed form formula theta = (inverse(X.transpose()*X)*X.transpose())*Y where X.transpose()
@@ -36,7 +36,13 @@ def main():
 	x = append(ones([m,1]),x,1)
 	theta = normal_equation(x,y)
 	print "Parameters Learned from the training set:\n",theta
-	
+	print "Enter the new values of feature vector x for which the target value should be predicted"
+	x_new = []
+	for i in xrange(n):
+		x_new.append(float(raw_input()))
+	feature_vector = array(x_new)
+	feature_vector = append(ones([1,1]),feature_vector)
+	print "Predicted value of target variable y corresponding to Linear Regression algorithm =",predict(feature_vector,theta)
 
 # Execute main() only when this script is executed from the command line	
 if __name__ == "__main__":
