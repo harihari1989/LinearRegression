@@ -36,7 +36,7 @@ def feature_normalize(x):
 
 	mu = mean(x,axis=0)
 	sigma = std(x,axis=0)
-	normalized_features = (x-mu)/sigma
+	normalized_features = (x-mu)/sigma if sigma !=0 else x
 	return normalized_features
 
 def gradient_descent(x,y,initial_theta,learning_rate,num_iterations):
@@ -86,6 +86,14 @@ def main():
 	initial_theta = zeros(shape = (n+1,1))
 	theta = gradient_descent(x,y,initial_theta,learning_rate,num_iterations)
 	print "Parameters Learned from the training set:\n",theta
+	print "Enter the new values of feature vector x for which the target value should be predicted"
+	x_new = []
+	for i in xrange(n):
+		x_new.append(float(raw_input()))
+	x_new = feature_normalize(x_new)
+	feature_vector = array(x_new)
+	feature_vector = append(ones([1,1]),feature_vector)
+	print "Predicted value of target variable y corresponding to Linear Regression algorithm =",predict(feature_vector,theta)
 
 # Execute main() only when this script is executed from the command line
 if __name__ == "__main__":
