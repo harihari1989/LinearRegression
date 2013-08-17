@@ -30,3 +30,17 @@ def parse_csv(file_name,num_training_examples,num_features):
 		y[i] = float(yparams)
 		i += 1
 	return (x,y)
+
+def predict(x,theta):
+	"""
+	Description:
+		Predict the value of target variable y, given input features x and parameters theta.
+	Parameters:
+		x - a feature vector
+		theta - parameter vector corresponding to the feature vector x.
+	Returns:
+		the predicted value of the target variable y, corresponding to x and theta.
+	"""
+
+	y = dot(x.transpose(),theta)
+	return y
